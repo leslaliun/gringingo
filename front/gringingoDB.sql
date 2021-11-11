@@ -85,15 +85,7 @@ create table notificaciones(
   foreign key (user_id) references usuarios(id)
 );
 
-insert into usuarios values
-(default,"gonzalo", "12345", 5, 40),
-(default,"daniel", "12345", 5, 100),
-(default,"josue", "12345", 5, 60),
-(default,"analia", "12345", 5, 80),
-(default,"jose", "12345", 5, 90),
-(default,"sara", "12345", 5, 70),
-(default,"flavia", "12345", 5, 50),
-(default,"matias", "12345", 5, 30);
+
 
 
 insert into ligas values
@@ -168,13 +160,13 @@ insert into respuestas values
 (default, "Cuantas ciudades viajaste?",false,11),
 (default, "Has viajado a ciudades?",false,11);
 insert into respuestas values
-(default, "A cuantas ciudades has viajado?",true,11),
-(default, "Cuantas ciudades viajaste?",false,11),
-(default, "Has viajado a ciudades?",false,11);
+(default, "A cuantas ciudades has viajado?",true,12),
+(default, "Cuantas ciudades viajaste?",false,12),
+(default, "Has viajado a ciudades?",false,12);
 insert into respuestas values
-(default, "Porque te gusta viajar?",false,11),
-(default, "Porque a la gente le gusta viajar?",true,11),
-(default, "Porque A la gente le gustó viajar?",false,11);
+(default, "Porque te gusta viajar?",false,13),
+(default, "Porque a la gente le gusta viajar?",true,13),
+(default, "Porque A la gente le gustó viajar?",false,13);
 
 alter table desafios add column tipo text;
 alter table desafios add parametro int;

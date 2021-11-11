@@ -1,10 +1,9 @@
+drop database gringingo;
 create database gringingo;
 use gringingo;
 
 create table usuarios(
   id int primary key auto_increment,
-  nombre text,
-  apellido text,
   nick text,
   password text,
   vida int,
@@ -77,19 +76,31 @@ create table ligas(
   puntos int
 );
 
+create table notificaciones(
+  id int primary key auto_increment,
+  user_id int,
+  tabla text,
+  tabla_id int,
+  mostrado bool,
+  foreign key (user_id) references usuarios(id)
+);
+
+
+
+
 insert into ligas values
-(default, "Oro", 200),
-(default, "Plata", 100),
-(default, "Bronce", 50);
+(default, "Diamante", 100),
+(default, "Oro", 80),
+(default, "Plata", 60);
 
 insert into niveles values
-(default, "Leccion 1"),
-(default, "Leccion 2");
+(default, "Nivel 1"),
+(default, "Nivel 2");
 
 insert into lecciones values
-(default, "Saludos", "",1),
-(default, "Familia", "",2),
-(default, "Menu", "",2);
+(default, "Introduccion", "",1),
+(default, "Saludos", "",2),
+(default, "Viajes", "",2);
 
 insert into preguntas values
 (1, 'Traducir a ingles [Buenos días]',"opciones", 1),
@@ -99,6 +110,16 @@ insert into preguntas values
 (5, 'Traducir a Ingles [Yo soy de Bolivia.]',"opciones", 1),
 (6, 'Escribe [Bienvenido] en ingles ',"comparar", 1),
 (7, 'Escribe [Mucho gusto] en ingles ',"comparar", 1);
+
+insert into preguntas values
+(8, 'Traducir al español [Good afternoon, nice to met you]',"opciones", 2),
+(9, 'Traducir al español [How are you?]',"opciones", 2),
+(10, 'Traducir al español [Nice to see you again]',"comparar", 2);
+
+insert into preguntas values
+(11, 'Traducir al español [What cities have you travelled to?]',"opciones", 3),
+(12, 'Traducir al español [Why do people like to travel?]',"opciones", 3),
+(13, 'Traducir al español [Paris is such a wonderfull place]',"comparar", 3);
 
 insert into respuestas values
 (default, "Good morning",true,1),
@@ -120,22 +141,56 @@ insert into respuestas values
 (default, "Welcome to Bolivia.",false,5),
 (default, "I am from Bolivia.",true,5),
 (default, "I am Bolivia.",false,5);
-insert into respuestas values (default, "Welcome",true,6);
-insert into respuestas values (default, "Nice to meet you.",true,7);
+insert into respuestas values 
+(default, "Welcome",true,6);
+insert into respuestas values 
+(default, "Nice to meet you.",true,7);
+insert into respuestas values
+(default, "Buenas tardes, mucho gusto",true,8),
+(default, "Buenos dias, mucho gusto",false,8),
+(default, "Buenas noches, mucho gusto",true,8);
+insert into respuestas values
+(default, "Como estuviste?",false,9),
+(default, "Como has estado?",false,9),
+(default, "Como estas?",true,9);
+insert into respuestas values 
+(default, "Que bueno verte denuevo",true,10);
+insert into respuestas values
+(default, "A cuantas ciudades has viajado?",true,11),
+(default, "Cuantas ciudades viajaste?",false,11),
+(default, "Has viajado a ciudades?",false,11);
+insert into respuestas values
+(default, "A cuantas ciudades has viajado?",true,12),
+(default, "Cuantas ciudades viajaste?",false,12),
+(default, "Has viajado a ciudades?",false,12);
+insert into respuestas values
+(default, "Porque te gusta viajar?",false,13),
+(default, "Porque a la gente le gusta viajar?",true,13),
+(default, "Porque A la gente le gustó viajar?",false,13);
+
+alter table desafios add column tipo text;
+alter table desafios add parametro int;
+
+insert into premios values(default, "Un buen inicio", "");
+insert into premios values(default, "Sin restrecciones", "");
+
+insert into desafios values(default, "Responde tu primera pregunta correpta",1,"exp",10);
+insert into desafios values(default, "Consigue 60 de experiencia",2,"exp",60);
+insert into desafios values(default, "Completa tu primera lección",2,"leccion",1);
 
 
 
 DELIMITER $$
 drop PROCEDURE if exists sp_usuario_insert;$$
-CREATE PROCEDURE sp_usuario_insert(_nombre TEXT, _apellido TEXT, _nick text, _password text)  BEGIN
-	INSERT into usuarios values (DEFAULT, _nombre, _apellido, _nick, sha1(_password), 0, 0);
+CREATE PROCEDURE sp_usuario_insert(_nick text, _password text)  BEGIN
+	INSERT into usuarios values (DEFAULT, _nick, sha1(_password), 5, 0);
     select * from usuarios where id = LAST_INSERT_ID();
 END$$
 
 DELIMITER $$
 drop PROCEDURE if exists sp_usuario_selectByLogin;$$
 CREATE PROCEDURE sp_usuario_selectByLogin (_nick TEXT,_password TEXT)  BEGIN
-	SELECT id, nombre, apellido, nick, vida, experiencia from usuarios where nick like _nick and password like sha1(_password);
+	SELECT id, nick, vida, experiencia from usuarios where nick like _nick and password like sha1(_password);
 END$$
 
 DELIMITER $$
@@ -209,13 +264,6 @@ CREATE PROCEDURE sp_usuarioQuitarVida(_id int)  BEGIN
 	
 END$$
 
-
-insert into premios values(default, "Un buen inicio", "");
-insert into premios values(default, "Sin restrecciones", "");
-
-insert into desafios values(default, "Responde tu primera pregunta correpta",1,"exp",10);
-insert into desafios values(default, "Consigue 60 de experiencia",2,"exp",60);
-insert into desafios values(default, "Completa tu primera lección",2,"leccion",1);
 
 
 
