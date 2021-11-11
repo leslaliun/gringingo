@@ -1,0 +1,38 @@
+<header>
+    <nav>
+        <div class="opciones">
+            <div class="item" [ngClass]="{active: this.opciones['home']}" [routerLink]="['/home']">
+                <img src="assets/img/global.png" width="35px" height="40px" alt="">
+                <p>Aprende</p>
+            </div>
+            <div class="item " [ngClass]="{active: this.opciones['desafios']}" [routerLink]="['/desafios']">
+                <img src="assets/img/flag.png" width="35px" height="40px" alt="">
+                <p>Desafios</p>
+            </div>
+            <div class="item" [ngClass]="{active: this.opciones['premios']}" [routerLink]="['/premios']">
+                <img src="assets/img/premio.png" width="35px" height="40px" alt="">
+                <p>Premios</p>
+            </div>
+            <div class="item" [ngClass]="{active: this.opciones['clasificacion']}" [routerLink]="['/clasificacion']">
+                <img src="assets/img/clasificacion.png" width="35px" height="40px" alt="">
+                <p>Clasificaciones</p>
+            </div>
+        </div>
+        <div class="status">
+            <div class="item">
+                <img src="assets/img/learning.png" width="35px" height="40px" alt="">
+                <p>42</p>
+            </div>
+            <div class="item">
+                <img src="assets/img/heart.png" width="35px" height="40px" alt="">
+                <p>3/5</p>
+            </div>
+        </div>
+        <div>
+            <div class="item" (click)="salir()">
+                <img src="assets/img/user.png" width="35px" height="40px" alt="">
+                <p>Usuario</p>
+            </div>
+        </div>
+    </nav>
+</header>

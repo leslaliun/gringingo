@@ -1,0 +1,29 @@
+.top_3 {
+    border-right: 1px solid #ccc;
+}
+
+.clasificacion {
+    margin-left: 40px;
+}
+
+.top_3 .item {
+    margin-bottom: 40px;
+}
+
+.item {
+    display: flex;
+}
+
+.top_3 .item p {
+    color: rgb(117, 206, 249);
+    font-size: 25px;
+}
+
+.top_3 .item:last-child p {
+    color: rgb(246, 164, 26);
+}
+
+.clasificacion .item p {
+    color: rgb(91, 86, 107);
+    font-size: 25px;
+}

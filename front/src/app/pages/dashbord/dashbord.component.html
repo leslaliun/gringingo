@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class="container">
+    <div class="text-center item" *ngIf="primerNivel!=null" [routerLink]="['/preguntas']" routerLinkActive="router-link-active">
+        <strong class="title">Nivel 1</strong>
+        <div class="avance" *ngIf="primerNivel.lecciones[0]!=null">
+            <img src="assets/img/niveles/{{primerNivel.lecciones[0].img}}.png" width="70px" alt="principiante">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemax="100"></div>
+            </div>
+            <p>{{primerNivel.lecciones[0].nombre}}</p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 80px; margin-left: 35%;">
+        <div class="col-6 row text-center" *ngFor="let item of niveles; let index = index">
+            <strong class="title">Nivel 2</strong>
+            <div class="col-5 text-center item" *ngFor="let item2 of item.lecciones">
+                <div class="avance">
+                    <img src="assets/img/niveles/{{item2.img}}.png" width="70px" alt="medio_1">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemax="100"></div>
+                    </div>
+                    <p>{{item2.nombre}}</p>
+                </div>
+            </div>
+        </div>
+        <!--<div class="col-6 row text-center">
+            <strong class="title">Nivel 3</strong>
+            <div class="col-5 text-center item">
+                <div class="avance">
+                    <img src="assets/img/niveles/dificil_1.png" width="70px" alt="principiante">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemax="100"></div>
+                    </div>
+                    <p>Saludos</p>
+                </div>
+            </div>
+            <div class="col-5 text-center item">
+                <div class="avance">
+                    <img src="assets/img/niveles/dificil_2.png" width="70px" alt="principiante">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemax="100"></div>
+                    </div>
+                    <p>Viajes</p>
+                </div>
+            </div>
+        </div>-->
+    </div>
+</div>

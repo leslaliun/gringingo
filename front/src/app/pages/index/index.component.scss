@@ -1,0 +1,17 @@
+.fondo {
+    background: url("../../../assets/img/bienvenida.png") no-repeat center;
+    background-size: cover;
+    height: 100vh;
+}
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    
+}
+
+footer p {
+    text-align: center !important;
+    margin: auto;
+    color: white;
+}

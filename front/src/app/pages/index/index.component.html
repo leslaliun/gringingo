@@ -1,0 +1,31 @@
+<header style="height: 40px; position: absolute; color: white; width: 100%; text-align: center;">
+    <nav style="display: flex; justify-content: space-between; width: 90%; margin: auto; text-align: center; margin-top: 15px;">
+        <h2>Gringingo</h2>
+        <div style="display: flex; justify-content: space-between; width: 40%; align-items: center;">
+            <h5>Identificate para guardar tu progreso</h5>
+            <button style="padding: 0px 15px; border: none; border-radius: 3px;" (click)="open(content, 'login')">Login</button>
+        </div>
+    </nav>
+</header>
+<main class="fondo">
+    <div style="position: absolute; top: calc(40% - 30px); left: calc(50%); width: 30%;">
+        <p style="color: white; font-size: 32px;">
+            Aprende el lenguaje universal de una vez por todas.
+        </p>
+        <button style="margin-top: 20px; border: none; border-radius: 30px; padding: 12px; background: rgb(72, 191, 43); color: white; font-size: 12px;" (click)="open(content, 'registro')">Empieza ya mismo</button>
+    </div>
+</main>
+<footer>
+
+    <p>El inglés es comprendido y hablado por 1000-1600 millones de personas alrededor del mundo.
+    </p>
+</footer>
+<ng-template #content let-modal style="z-index: 30px;">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Welcome</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <app-login [operacion]="operacion" [modal]="modal"></app-login>
+</ng-template>

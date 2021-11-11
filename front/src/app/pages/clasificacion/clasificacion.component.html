@@ -1,0 +1,24 @@
+<app-header [opcion]="'clasificacion'"></app-header>
+<div class="container">
+    <div class="row" style="height: 100vh;">
+        <div class="top_3 col-7 ">
+            <h4><strong>Tabla de clasificacion, mejores 3 usuarios</strong></h4>
+            <br>
+            <div class="item" *ngFor="let item of [1,1,1]; let index = index">
+                <p style="margin: auto 0px; margin-right: 20px;"><strong>{{index + 1}}.-</strong></p>
+                <img *ngIf="index+1 != 3" src="assets/img/diamond.png" width="100px" alt="diamante">
+                <img *ngIf="index+1 == 3" src="assets/img/oro.png" width="100px" alt="diamante">
+                <p style="margin: auto; margin-left: 30px;"><strong>Pepe</strong></p>
+            </div>
+        </div>
+        <div class="clasificacion col-4">
+            <h4><strong>Tú clasificación...</strong></h4>
+            <br>
+            <div class="item" *ngFor="let item of [4,5,6,7,8]; let index = index">
+                <p style="margin: auto 0px; margin-right: 20px;"><strong>{{item}}.-</strong></p>
+                <img src="assets/img/plata.png" width="100px" alt="diamante">
+                <p style="margin: auto; margin-left: 30px;"><strong>Pepe</strong></p>
+            </div>
+        </div>
+    </div>
+</div>

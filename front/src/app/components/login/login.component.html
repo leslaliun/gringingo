@@ -1,0 +1,20 @@
+<div class="modal-body">
+    <form>
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text" id="my-addon">Username</span>
+            </div>
+            <input class="form-control" type="text" [(ngModel)]="objUser.nick" name="nick" aria-label="Recipient's " aria-describedby="my-addon">
+        </div>
+        <br>
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text" id="my-addon">Password</span>
+            </div>
+            <input class="form-control" type="password" name="password" [(ngModel)]="objUser.password" aria-label="Recipient's " aria-describedby="my-addon">
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="operacionUsuario()">Save</button>
+</div>
